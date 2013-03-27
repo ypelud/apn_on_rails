@@ -58,8 +58,9 @@ class APN::Notification < APN::Base
       result['aps']['sound'] = "1.aiff" if self.sound.is_a?(TrueClass)
     end
     if self.custom_properties
+      result['aps']['custom'] = {}
       self.custom_properties.each do |key,value|
-        result["#{key}"] = "#{value}"
+        result['aps']['custom']["#{key}"] = "#{value}"
       end
     end
     result
